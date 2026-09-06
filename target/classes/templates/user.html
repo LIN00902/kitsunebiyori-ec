@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>狐日和</title>
+
+    <!-- Reset CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <!-- 🌟 CSS 引入 -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <!-- Google 字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=LXGW+Marker+Gothic&display=swap" rel="stylesheet">
+</head>
+
+<body class="userbody">
+    <header class="header">
+        <a th:href="@{/}">
+            <div class="logo"><img th:src="@{/picture/kitsunelogo.jpg}" alt="狐日和 Logo"></div>
+        </a>
+        <nav>
+            <ul class="headerlink">
+                <li><a th:href="@{/story}">ブランドストーリー</a></li>
+                <li><a th:href="@{/products}">商品一覧</a></li>
+                <li><a th:href="@{/tennjikai}">出展情報</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="login-container">
+            <h2>管理者登録</h2>
+<form th:action="@{/login}" method="POST">
+    <div class="input-group">
+        <label for="username">ユーザーID</label>
+        <input type="text" id="username" name="username" required>
+    </div>
+    <div class="input-group">
+        <label for="password">パスワード</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <button type="submit" class="login-btn">ログイン</button>
+</form>
+            <div class="extra-links">
+                <a href="#">パスワードを忘れれの方 ＞</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <img th:src="@{/picture/kitsunelogo.jpg}" alt="Logo">
+            <p>買い物リンク：pinkoi.com/store/kitsunebiyori</p>
+        </div>
+    </footer>
+</body>
+
+</html>

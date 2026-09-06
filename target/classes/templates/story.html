@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>狐日和</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=LXGW+Marker+Gothic&display=swap" rel="stylesheet">
+
+    <style>
+        section {
+            max-width: none !important;
+            width: 100%;
+        }
+        .storybackground .section2 {
+        padding-bottom: 0;
+    }
+
+    .storybackground section {
+        margin-bottom: 0;
+    }
+
+    .storybackground .background_font {
+        margin-bottom: 0;
+    }
+
+    .storybackground .memo-image-wrapper {
+        margin-top: 0;
+    }
+    </style>
+</head>
+
+<body class="storybackground">
+    <header class="header">
+        <a th:href="@{/}">
+            <div class="logo"><img th:src="@{/picture/kitsunelogo.jpg}" alt="狐日和 Logo"></div>
+        </a>
+        <nav>
+            <ul class="headerlink">
+                <li><a th:href="@{/story}">ブランドストーリー</a></li>
+                <li><a th:href="@{/products}">商品一覧</a></li>
+                <li><a th:href="@{/tennjikai}">出展情報</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 中間內容與背景色區塊 -->
+    <div class="content-wrapper">
+        <section class="section2">
+            <!--hidden-title-->
+            <h1>狐日和の物語</h1>
+
+            <div class="background_font">
+                <p>「ここもいい天気ですね！」</p>
+                <p>村長が稲荷寿司を手渡してくれた。村長自慢の料理をくわえ、駅の外に広がる快晴を眺めながら、</p>
+                <p> 狐の村の「百日晴れ」の伝説に思わず感嘆した。一つ前の駅ではあんなに暴風雨だったのに。</p>
+                <p>太陽の光で温まった席を選んで腰を下ろし、リュックを下ろして画材を取り出す。</p>
+                <p>村長は外を見ながら、「この作品は何をテーマにするんだい？」と尋ねた。</p>
+                <p>温かい日差しを浴びながら目を閉じて少し考えた。</p>
+                <p>「『狐日和（きつねびより）』。」</p>
+            </div>
+        </section>
+    </div>
+
+    <div class="memo-image-wrapper">
+        <img th:src="@{/picture/memo02.jpg}" alt="memo02">
+    </div>
+
+    <!-- 🌟 Footer 放在最下方 -->
+    <footer>
+        <div class="footer">
+            <img th:src="@{/picture/kitsunelogo.jpg}" alt="Logo">
+            <p>買い物リンク：pinkoi.com/store/kitsunebiyori</p>
+            <p><a th:href="@{/user}">管理者ログイン</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>

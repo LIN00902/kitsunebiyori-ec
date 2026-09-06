@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>狐日和</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=LXGW+Marker+Gothic&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <a th:href="@{/}">
+            <div class="logo"><img th:src="@{/picture/kitsunelogo.jpg}" alt="狐日和 Logo"></div>
+        </a>
+        <nav>
+            <ul class="headerlink">
+                <li><a th:href="@{/story}">ブランドストーリー</a></li>
+                <li><a th:href="@{/products}">商品一覧</a></li>
+                <li><a th:href="@{/tennjikai}">出展情報</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div class="newproduct_top">
+            <h2>新商品</h2>
+            <div class="newproduct_hanaishi">
+                <img th:src="@{/picture/hanaishi.jpg}" alt="新商品圖片">
+                <p>│狐狸摩登花磚│光釉吸水杯墊</p>  
+            </div>
+        </div>
+
+        <h2>商品一覧</h2>
+     <div class="popular_product">
+            <!-- 動態迴圈：自動把資料庫所有的商品全部列出來，不漏掉任何一個新加的 ID -->
+            <div th:each="entry : ${productMap}" class="product-card">
+                <!-- 商品圖片 -->
+                <img th:src="@{'/picture/' + ${entry.value.img}}" alt="商品圖片">
+                
+                <!-- 商品名稱 -->
+                <p class="product-name" th:text="${entry.value.name}"></p>
+                
+                <!-- 🌟 加上這行：顯示商品說明文字 (text) -->
+                <p class="product-text" th:text="${entry.value.text}"></p>
+                
+                <!-- 價格與庫存 -->
+                <p>價格：NT$ <span th:text="${entry.value.price}">0</span></p>
+                <p>在庫：<span th:text="${entry.value.amount}">0</span></p>
+            </div>
+        </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer">
+            <img th:src="@{/picture/kitsunelogo.jpg}" alt="Logo">
+            <p>買い物リンク：pinkoi.com/store/kitsunebiyori</p>
+            <p><a th:href="@{/user}">管理者ログイン</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>

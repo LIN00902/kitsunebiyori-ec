@@ -1,0 +1,455 @@
+  /* 1. 清除網頁原本的預設邊距 */
+  html {
+      height: 100%;
+  }
+
+  body {
+      margin: 0;
+      font-family: "LXGW Marker Gothic", sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+  }
+
+  body.storybackground{
+    background-color: #fffee8;
+    margin: 0;
+      font-family: "LXGW Marker Gothic", sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+  }
+
+  .lxgw-marker-gothic-regular {
+      font-family: "LXGW Marker Gothic", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+  }
+
+  .header {
+      display: flex;
+      /* 啟用 Flexbox 魔法，讓裡面的 LOGO 和選單排成一橫排 */
+      align-items: flex-end;
+      /* 讓左邊和右邊的字在向下對齊 */
+      padding: 0px 40px;
+      /* 幫導覽列上下左右留一點舒適的留白（上下20px，左右40px） */
+      background-color: #fef1c4;
+      /* 幫導覽列加一個淡淡的背景色，方便你觀察 */
+  }
+
+  .logo img {
+      width: 80px;
+      height: auto;
+
+  }
+
+  .logo {
+      flex-shrink: 0;
+      /* 讓 LOGO 保持原本圖片的大小，不放大也不縮小 */
+      margin-right: 40px;
+      /* 讓 LOGO 保持原本圖片的大小，不放大也不縮小 */
+  }
+
+  .headerlink {
+      display: flex;
+      justify-content: space-evenly;
+      /*把所有子元素平均分配，每個間距都一樣，包括左右兩邊的空白。*/
+      list-style: none;
+      margin: 0;
+      padding: 0;
+  }
+
+  nav {
+      flex: 1;
+      /*把剩下的空間全部分配給這個元素*/
+  }
+
+  .headerlink li {
+      margin-left: 0px;
+  }
+
+  .headerlink a {
+      color: #ba7e10;
+      text-decoration: none;
+      font-weight: 500;
+      /* 讓字體稍微加粗一點點，比較好閱讀 */
+      background-color: aliceblue;
+      display: inline-block;
+      /* 讓 <a> 變成區塊，這樣才能設定寬高與內邊距 */
+      padding: 5px 20px;
+      /* 上下留 5px，左右留 10px，把白色格子撐起來 */
+      border-radius: 8px;
+      /* 讓格子的四個角變圓圓的（數值越大越圓） */
+      margin-bottom: 10px;
+  }
+
+  .backgroundup {
+    width: 100%;
+    height: 250px;       /* 🌟 請在這裡調整您想要的「高度」（例如 350px、400px，數字越小上下切越多） */
+    overflow: hidden;    /* 🌟 關鍵：把超出這個高度的上下圖片切掉 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  .backgroundup img {
+    width: 100%;         /* 左右維持 100% 填滿，絕對不改變左右範圍 */
+    height: 100%;        /* 高度填滿容器 */
+    object-fit: cover;   /* 🌟 核心魔法：保持比例，自動裁切上下多餘的部分 */
+    object-position: center; /* 讓圖片置中裁切（如果您想偏上一點或偏下一點，可以改成 center top 或 center bottom） */
+}
+
+  section {
+      max-width: 800px;
+      /* 🌟 留著它！鎖定文字最完美的閱讀寬度 */
+      margin: 60px auto;
+      /* 🌟 加上它！大螢幕時負責把 800px 的箱子「搬到中間」 */
+      margin-top: 10px;
+      margin-bottom: 10px;
+      flex-grow: 1;
+  }
+
+  .section2 {
+      padding-bottom: 20px;
+      padding-top: 20px; /* 直接讓整個 section 往下推 */
+  }
+
+  .section2 p {
+      text-align: center;
+      margin: 0px;
+      font-size: 18px;
+  }
+
+  h3 {
+      text-align: center;
+      margin-top: 0px;
+  }
+
+  ul {
+      display: flex;
+  }
+
+  h1 {
+      /* 🌟 魔法：讓這個標題在畫面上完全消失，不佔任何空間 */
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+  }
+
+  .product img {
+      width: 200px;
+      /* 設定固定的寬度 */
+      height: 200px;
+      /* 設定高度和寬度一樣，就會變成完美正方形 */
+
+      object-fit: cover;
+      /* 🌟 核心魔法：圖片會自動填滿 200x200 的四角形，多餘的會裁切，絕不變形！ */
+      border-radius: 12px;
+      /* （選配）如果你希望商品的四角形也跟導覽列一樣帶點圓角，可以加上這行 */
+  }
+
+  .product {
+      gap: 10px;
+      list-style: none;
+  }
+.product-name {
+    font-size: 12px; 
+    margin-bottom: 5px; /* 調整與下方價格的間距（選填） */
+}
+
+
+  h2 {
+      text-align: center;
+      margin-top: 0;
+      font-size: 20px;
+  }
+
+  .NEWS {
+      display: flex;
+      width: 90%;
+      /* 手機版時占螢幕 90% */
+      max-width: 1000px;
+      /* 🌟 大螢幕時，最大乖乖固定在 1000px */
+      margin: 60px auto;
+      /* 🌟 核心魔法：大畫面時自動把整個區塊搬到正中央 */
+      /*align-items: flex-start; ??? */
+
+  }
+
+  .NEWSLIST {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      /* 🌟填滿右邊剩下的所有空間 */
+      list-style: none;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+  }
+
+  .NEWSLIST li {
+      /* 🌟 修正這裡：加上 1px（粗細）和 solid（實線形狀） */
+      border-bottom: 1px dashed #ba7e10;
+      height: 30px;
+
+  }
+
+  .NEWSLEFT {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 20px;
+  }
+
+  .NEWSLEFT h3,
+  .NEWSLEFT h4 {
+      margin: 0;
+  }
+
+  .news_item {
+      display: flex;
+      font-size: 20px;
+      gap: 40px;
+
+  }
+
+  .news_date {
+      width: 180px;
+      /* 固定日期欄位寬度 */
+      margin-bottom: 0;
+      margin-top: 5px;
+  }
+
+  .news_title {
+      margin-bottom: 0;
+      margin-top: 5px;
+  }
+
+  .footer {
+      background-color: #ffde97;
+      display: flex;
+      align-items: center;
+  }
+
+  .footer img {
+      width: 80px;
+  }
+
+  .footer p {
+    flex-grow: 1;
+    text-align: center; /* 改用 text-align 來讓文字置中 */
+    padding-left: 0;    /* 如果置中了，原本為了靠左留的 padding-left 建議拿掉或調整 */
+}
+
+  /* 文字順利排列在圖片「上方」（疊在圖片上層）的關鍵點有兩個：定位機制與圖層順序 */
+
+  .background_picture-font {
+    display: flex;
+    flex-direction: column; /* 讓圖片在上、文字在下，或者看你原本的排版 */
+    align-items: center;    /* 🌟 讓內部元素水平置中 */
+    justify-content: center;
+    text-align: center;     /* 文字也置中 */
+    margin: 0 auto;
+}
+
+.background_picture-font {
+    display: flex;
+    flex-direction: column; /* 讓內部元素上下排列：文字在上、圖片在下 */
+    align-items: center;    /* 水平置中 */
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+ /* 🌟 覆蓋在 header 與 footer 之間的背景色區塊 */
+.content-wrapper {
+    background-color: #fffbf8; /* 奶油黃背景 */
+    width: 100%;
+    flex: 1;                  /* 🌟 關鍵：自動撐開剩餘空間，讓 Footer 黏在最下方 */
+    padding: 100px 0 0 0;
+    box-sizing: border-box;
+}
+
+/* 故事文字區塊 */
+.background_font {
+    text-align: center;
+    max-width: 1000px;
+    margin: 100px auto auto auto; 
+    line-height: 1.8;
+    padding: 0 20px;          /* 手機版左右留點邊距 */
+}
+
+/* 下方圖片的包裝容器 */
+.memo-image-wrapper {
+    width: 100vw;           /* 強制寬度等於整個視窗的寬度 */
+    position: relative;     /* 定位基準 */
+    left: 50%;              /* 往右推 50% */
+    right: 50%;             /* 往左推 50% */
+    margin-left: -50vw;     /* 往回拉 50vw，打破父層限制，實現左右滿版 */
+    margin-right: -50vw;
+    margin-top: 0;       /* 維持您原本想貼齊底部的設定 */
+    padding: 0;             /* 確保沒有內距 */
+}
+
+/* 圖片本體：確保等比例縮放、不變形 */
+.memo-image-wrapper img {
+    width: 100%;            /* 寬度撐滿容器 */
+    height: auto;           /* 高度等比例縮放，不變形 */
+    display: block;         /* 消除圖片下方預設的微小空白間隙 */
+    margin: 0;
+}
+
+  .newproduct_hanaishi {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .newproduct_hanaishi img {
+      width: 300px;
+      border-radius: 12px;
+  }
+
+  .newproduct_hanaishi p {
+      text-align: center;
+  }
+
+  .newproduct_top {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+  }
+
+  .popular_product {
+      display: flex;
+      gap: 10px;
+  }
+
+  .popular_product img {
+      width: 200px;
+      height: 200px;
+      border-radius: 12px;
+      object-fit: cover;
+  }
+  .product-name {
+    font-size: 14px; /* 🌟 數值可以自己調整，例如 14px 或 13px */
+    margin-bottom: 5px; /* 調整與下方價格的間距（選填） */
+}
+
+ /* 1. 設定箱子 (div) 的大小與隱藏超出範圍的圖片 */
+.tenjikaigazo01 {
+    width: 100%;
+    height: 300px; /* 依照您想要的箱子高度調整 (例如 300px 或 400px) */
+    overflow: hidden; /* 🌟 關鍵：把超出箱子範圍的上下圖片切掉 */
+}
+
+/* 2. 強制圖片填滿箱子並自動裁切 */
+.tenjikaigazo01 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 🌟 關鍵：自動裁切上下，保持比例不變形 */
+    object-position: center 60%; /* 讓圖片置中裁切 */
+}
+
+.userbody {
+    margin: 0;
+    font-family: "LXGW Marker Gothic", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fef1c4 0%, #ecca5c 100%);
+}
+
+.userbody main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1; /* 讓中間撐開，把 Footer 頂到底部 */
+    width: 100%;
+}
+
+.login-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-container h2 {
+    margin-bottom: 24px;
+    color: #333333;
+    text-align: center;
+    font-size: 24px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555555;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #d29e00;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #d29e00;
+    border: none;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-btn:hover {
+    background: #b08300;
+}
+
+.extra-links {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.extra-links a {
+    color: #9a5c00;
+    text-decoration: none;
+}
+
+.extra-links a:hover {
+    text-decoration: underline;
+}
+
+/* 只有帶有 class="no-spinner" 的輸入框會隱藏上下箭頭 */
+input.no-spinner::-webkit-inner-spin-button, 
+input.no-spinner::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
