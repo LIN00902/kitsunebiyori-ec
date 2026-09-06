@@ -10,26 +10,24 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Long id; // 數字型態
+    private Long id; 
 
     private String name;
 
-    private String img;   // 圖片欄位
+    private String img; 
 
-    private String text;  // 說明欄位
+    private String text; 
 
     private Integer price;
 
-    private Integer amount; // 數量欄位
-
+    private Integer amount; 
     public Product() {
     }
 
     public Long getId() {
         return id;
     }
-
-    // 🌟 修正這裡：把參數改成 Long
+    
     public void setId(Long id) {
         this.id = id;
     }
