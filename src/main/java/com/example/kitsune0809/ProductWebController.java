@@ -18,9 +18,6 @@ public class ProductWebController {
 
     @Autowired
     private ProductRepository productRepository;
-
-    // 🌟 建立一個商品對照表（ID 對應 名稱與圖片），完全不需要 if-else！
-    // 之後如果加新商品（例如 ID 5），只需要在這裡多加一行即可，非常乾淨好維護。
     private static final Map<Long, String[]> PRODUCT_PRESETS = Map.of(
         1L, new String[]{"│狐狸摩登花磚│光釉吸水杯墊", "hanaishi.jpg"},
         2L, new String[]{"│抱抱狐狸│狐狸造型迴紋針", "popular_product01.png"},
@@ -81,7 +78,6 @@ public class ProductWebController {
         return "admin";
     }
 
-    // 8. 新增商品 (透過對照表自動帶入名稱與圖片，零 if-else)
     @PostMapping("/admin/products/add")
     public String addProduct(@RequestParam("id") Long id,
             @RequestParam("price") int price,
@@ -94,7 +90,6 @@ public class ProductWebController {
         product.setAmount(amount);
         product.setText(text);
         
-        // 從對照表直接抓取名稱與圖片
         String[] preset = PRODUCT_PRESETS.get(id);
         if (preset != null) {
             product.setName(preset[0]);
@@ -113,7 +108,6 @@ public class ProductWebController {
         return "redirect:/admin";
     }
 
-    // 10. 更新商品
     @PostMapping("/admin/products/update")
     public String updateProduct(@RequestParam("id") Long id,
             @RequestParam("price") Integer price,
@@ -126,7 +120,6 @@ public class ProductWebController {
             product.setAmount(amount);
             product.setText(text);
             
-            // 更新時也確保對應名稱正確
             String[] preset = PRODUCT_PRESETS.get(id);
             if (preset != null) {
                 product.setName(preset[0]);
