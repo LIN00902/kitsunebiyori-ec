@@ -2,20 +2,11 @@
 <html lang="zh-Hant" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <!-- 確保你的中文繁體字不會變成亂碼 -->
     <meta charset="UTF-8">
-
-    <!-- RWD 響應式網頁設定 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>狐日和 - 商品在庫管理</title>
-
-    <!-- 引入線上免費的 Reset CSS (Normalize) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-
-    <!-- 🌟 CSS 引入 -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
-
-    <!-- 引進 Google 字體 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=LXGW+Marker+Gothic&display=swap" rel="stylesheet">
@@ -36,19 +27,17 @@
     </header>
 
     <main style="max-width: 900px; margin: 40px auto; padding: 20px;">
-        <!-- 將容器改寬一點，容納表格 -->
         <div class="login-container" style="max-width: 100%;">
             <h2>商品在庫管理</h2>
             <p style="text-align: center; color: #555555; margin-bottom: 24px;">お帰りなさいませ！こちらで直接商品の在庫を調整できます：</p>
 
-            <!-- 新增商品區域 (下拉選單選 ID) -->
+            <!-- (プルダウンからIDを選択) -->
             <div
                 style="background: #fff8e1; padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 1px solid #ffe082;">
                 <h3 style="margin-top: 0; color: #b45309; font-size: 18px;">新增商品</h3>
                 <form th:action="@{/admin/products/add}" method="POST"
                     style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
 
-                    <!-- 選擇商品 ID -->
                     <select name="id" required
     style="padding: 8px; flex: 2; border: 1px solid #ccc; border-radius: 4px; background: white;">
     <option value="">商品IDを選んでください</option>
@@ -69,7 +58,6 @@
                 </form>
             </div>
 
-            <!-- 商品列表與價格、庫存調整表格 -->
             <table
                 style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
                 <thead>
@@ -82,33 +70,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- 使用 Thymeleaf 迴圈印出所有商品 -->
                     <tr th:each="product : ${products}" style="border-bottom: 1px solid #eee;">
 
-                        <!-- 獨立的表單，以商品 ID 作為識別 -->
                         <form th:id="'update-form-' + ${product.id}" th:action="@{/admin/products/update}"
                             method="POST">
                             <input type="hidden" name="id" th:value="${product.id}">
                         </form>
 
-                        <!-- 🌟 修正點 1：商品名稱 (從資料庫讀取 product.name 顯示) -->
                         <td style="padding: 12px; font-weight: bold;" th:text="${product.name}">商品名</td>
 
-                        <!-- 說明文字欄位 (product.text) -->
                         <td style="padding: 12px;">
                             <input type="text" name="text" th:value="${product.text}"
                                 th:attr="form='update-form-' + ${product.id}"
                                 style="width: 150px; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
                         </td>
 
-                        <!-- 價格欄位 (product.price) -->
                         <td style="padding: 12px;">
                             <input type="text" name="price" th:value="${product.price}" class="no-spinner"
                                 th:attr="form='update-form-' + ${product.id}"
                                 style="width: 80px; padding: 6px; border: 1px solid #ccc; border-radius: 4px;" required>
                         </td>
 
-                        <!-- 庫存欄位 (product.amount) -->
                         <td style="padding: 12px;">
                             <div style="display: flex; align-items: center; gap: 4px;">
                                 <button type="button" onclick="changeStock(this, -1)"
@@ -122,7 +104,6 @@
                             </div>
                         </td>
 
-                        <!-- 操作欄位 (儲存與刪除) -->
                         <td style="padding: 12px; display: flex; gap: 8px; align-items: center;">
                             <button type="submit" th:attr="form='update-form-' + ${product.id}" class="login-btn"
                                 style="padding: 6px 12px; font-size: 14px; width: auto; margin: 0;">儲存</button>
@@ -144,12 +125,12 @@
         </div>
     </footer>
     <script>
-        // JavaScript 庫存數量「＋/－」
+        // JavaScript 在庫数量「＋/－」
         function changeStock(btn, delta) {
             const input = btn.parentElement.querySelector('.stock-input');
             let val = parseInt(input.value) || 0;
             val += delta;
-            if (val < 0) val = 0; // 庫存不能小於 0
+            if (val < 0) val = 0; 
             input.value = val;
         }
     </script>
